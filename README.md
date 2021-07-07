@@ -1,5 +1,4 @@
-# Link Heroku
-GET - https://challengejava.herokuapp.com/api/clients
+
 
 #### Tecnologis utilizadas:
 * Java 8
@@ -8,5 +7,5 @@ GET - https://challengejava.herokuapp.com/api/clients
 * Spring Data
 * JSON
 * Maven
-* Postgresql
+* Mysql
 
