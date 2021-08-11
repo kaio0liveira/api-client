@@ -46,7 +46,18 @@ public class ClientsService {
 		return clientsRepository.save(client);
 	}
 	
-	public Clients save(Clients client) {
+	public Clients save(Clients client) throws ClientNotFoundException {
+		
+		Optional<Clients> cpf = clientsRepository.findByCpf(client.getCpf());
+		if(cpf.isPresent()) {
+			
+			throw new ClientNotFoundException("O CPF: "+ cpf.get().getCpf()+" já existe!");
+		}
+		
+		if(client.getCpf().length() > 11) {
+			throw new ClientNotFoundException("CPF superior a 11 caracteres: "+ client.getCpf().length());
+		}
+		
 		return clientsRepository.save(client);
 	}
 	

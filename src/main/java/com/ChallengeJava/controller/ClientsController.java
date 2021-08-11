@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ChallengeJava.entity.Clients;
+import com.ChallengeJava.entity.ErrorObject;
 import com.ChallengeJava.exception.ClientNotFoundException;
 import com.ChallengeJava.service.ClientsService;
 
@@ -37,9 +38,20 @@ public class ClientsController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Clients> save(@RequestBody Clients client) {
-		clientsService.save(client);
-		return ResponseEntity.status(HttpStatus.CREATED).body(client);
+	public ResponseEntity<?> save(@RequestBody Clients client) throws ClientNotFoundException {
+		
+		try{
+			clientsService.save(client);
+			return ResponseEntity.status(HttpStatus.CREATED).body(client);
+		
+		}catch (ClientNotFoundException e) {
+			 
+			ErrorObject error = new ErrorObject(e.getClass().getSimpleName(), e.getMessage());
+			System.out.println(error);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+		}
+		
+		
 	}
 
 	@DeleteMapping("/{id}")

@@ -20,20 +20,21 @@ public class Clients implements Serializable {
 	
 	
 	private String name;
-
+	
+	//@CPF
 	private String cpf;
 	
-	private String address;
+	private Endereco endereco;
 
 	public Clients() {
 	}
 
-	public Clients (Long id, String name, String cpf, String address) {
+	public Clients (Long id, String name, String cpf, Endereco endereco) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
-		this.address = address;
+		this.endereco = endereco;
 	}
 
 	public Long getId() {
@@ -60,12 +61,14 @@ public class Clients implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public String getAddress() {
-		return address;
+	public Endereco getEndereco() {
+		return endereco;
 	}
 
-	public void setAnddress(String anddress) {
-		this.address = anddress;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
+
+	
 	
 }
