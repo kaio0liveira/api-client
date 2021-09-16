@@ -15,6 +15,10 @@ public class ClientsService {
 	@Autowired
 	private ClientRepository clientsRepository;
 	
+	public ClientsService(ClientRepository clientsRepository2) {
+		
+		this.clientsRepository = clientsRepository2;
+	}
 	//validação de cliente, caso ID não existir
 	public Clients findById(Long id) throws ClientNotFoundException {
 		Optional<Clients> client = clientsRepository.findById(id);
