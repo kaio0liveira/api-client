@@ -22,15 +22,11 @@ public class ClientsService {
 	//validação de cliente, caso ID não existir
 	public Clients findById(Long id) throws ClientNotFoundException {
 		Optional<Clients> client = clientsRepository.findById(id);
-		
-		Clients client1 = null;
-		if(!client.isPresent()) {
-			throw new ClientNotFoundException("ID "+id+" not found!");
-		}else {
-			client1 = client.get();
 
+		if(!client.isPresent()) {
+			throw new ClientNotFoundException("ID " + id + " not found!");
 		}
-		return client1;
+		return client.get();
 	}
 	public List<Clients> findAll() {
 		return clientsRepository.findAll();

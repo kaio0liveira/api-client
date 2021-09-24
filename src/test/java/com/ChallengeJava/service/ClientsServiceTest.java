@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -13,8 +14,9 @@ import com.ChallengeJava.entity.Clients;
 import com.ChallengeJava.exception.ClientNotFoundException;
 import com.ChallengeJava.repository.ClientRepository;
 
-class ClientsTest {
-
+class ClientsServiceTest {
+	
+	@InjectMocks
 	private ClientsService service;
 
 	@Mock
@@ -23,9 +25,6 @@ class ClientsTest {
 	@BeforeEach
 	public void beforeEach() {
 		MockitoAnnotations.initMocks(this);
-
-		// atribuindo o Mock clientsRepository dessa classe para a classe service
-		this.service = new ClientsService(clientsRepository);
 	}
 
 	// Testando Exceção
