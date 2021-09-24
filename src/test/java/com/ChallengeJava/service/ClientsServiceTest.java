@@ -9,6 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import static org.mockito.Mockito.*;
 
 import com.ChallengeJava.entity.Clients;
 import com.ChallengeJava.exception.ClientNotFoundException;
@@ -33,12 +34,13 @@ class ClientsServiceTest {
 
 		Clients cliente = new Clients(1L, null, null, null);
 
-		Mockito.when(clientsRepository.findById((long) 1)).thenReturn(Optional.of(cliente));
+		Mockito.when(clientsRepository.findById(any())).thenReturn(Optional.of(cliente));
 
 		try {
 			service.findById(2L);
 		} catch (Exception e) {
 			Assertions.assertEquals("ID 2 not found!", e.getMessage());
+			
 		}
 
 	}
